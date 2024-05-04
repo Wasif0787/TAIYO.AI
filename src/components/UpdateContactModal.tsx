@@ -66,7 +66,7 @@ const UpdateContactModal: React.FC<UpdateContactModalProps> = ({ isOpen, onClose
                             </div>
                             <div className="text-right">
                                 <button type="button" className="text-gray-600 hover:text-gray-800 mr-4" onClick={onClose}>Cancel</button>
-                                <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">Update</button>
+                                <button type="submit" className="bg-[#f75990] hover:bg-[#852b4a] text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-[#e482a5]">Update</button>
                             </div>
                         </form>
                     </div>

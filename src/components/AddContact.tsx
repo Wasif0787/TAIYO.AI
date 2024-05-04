@@ -53,7 +53,7 @@ const AddContact = () => {
                     </select>
                 </div>
                 <div className='mb-4 text-center'>
-                    <button className='bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-[50%]' type="submit">ADD</button>
+                    <button className='bg-[#f75990] hover:bg-pink-300 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-[50%]' type="submit">ADD</button>
                 </div>
             </form>
         </div>
