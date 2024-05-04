@@ -40,22 +40,26 @@ const AllContact = () => {
 
     return (
         <div className=''>
-            <div className='grid md:grid-cols-3 gap-8 md:gap-12'>
-                {contacts.map((contact) => (
-                    <div key={contact.id} className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700">
-                        <div className="flex flex-col justify-between p-4 leading-normal">
-                            <h5 className="mb-2 text-2xl font-bold tracking-tight">{contact.fname} {contact.lname}</h5>
-                            <p className={`mb-3 font-normal ${contact.isActive ? 'text-green-600' : 'text-red-600'}`}> {contact.isActive ? "Active" : "Not Active"}</p>
+            {contacts.length === 0 ? (
+                <p className="text-center mt-4">No contacts found. Please create a contact using the add contact button.</p>
+            ) : (
+                <div className='grid md:grid-cols-3 gap-8 md:gap-12'>
+                    {contacts.map((contact) => (
+                        <div key={contact.id} className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700">
+                            <div className="flex flex-col justify-between p-4 leading-normal">
+                                <h5 className="mb-2 text-2xl font-bold tracking-tight">{contact.fname} {contact.lname}</h5>
+                                <p className={`mb-3 font-normal ${contact.isActive ? 'text-green-600' : 'text-red-600'}`}> {contact.isActive ? "Active" : "Not Active"}</p>
+                            </div>
+                            <div className='flex flex-row gap-1 text-pink-300 m-2 text-2xl'>
+                                <FaRegEdit onClick={() => handleOpenUpdateModal(contact)} className='hover:cursor-pointer' />
+                                <MdDeleteOutline onClick={() => handleDelete(contact.id, `${contact.fname} ${contact.lname}`)} className='hover:cursor-pointer' />
+                            </div>
                         </div>
-                        <div className='flex flex-row gap-1 text-pink-300 m-2 text-2xl'>
-                            <FaRegEdit onClick={() => handleOpenUpdateModal(contact)} className='hover:cursor-pointer' />
-                            <MdDeleteOutline onClick={() => handleDelete(contact.id, `${contact.fname} ${contact.lname}`)} className='hover:cursor-pointer' />
-                        </div>
-                    </div>
-                ))}
-            </div>
+                    ))}
+                </div>
+            )}
             {selectedContact && <UpdateContactModal isOpen={showUpdateModal} onClose={handleCloseUpdateModal} contact={selectedContact} onUpdate={handleUpdate} />}
-        </div >
+        </div>
     );
 }
 

@@ -4,7 +4,7 @@ export interface Contact {
     id: string,
     fname: string,
     lname: string,
-    isActive: boolean
+    isActive: boolean,
 }
 
 interface ContactState {
