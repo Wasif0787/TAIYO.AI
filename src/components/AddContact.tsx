@@ -47,7 +47,6 @@ const AddContact = () => {
                 <div className="mb-4">
                     <label htmlFor="status" className="block mb-1">isActive</label>
                     <select required name="status" id="" className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" value={status ? "Active" : "Not Active"} onChange={handleStatusChange}>
-                        <option value="">Select an option</option>
                         <option value="Active">Active</option>
                         <option value="Not Active">Not Active</option>
                     </select>

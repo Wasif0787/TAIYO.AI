@@ -4,6 +4,9 @@ import { deleteContact, updateContact } from '../store/features/contactSlice';
 import UpdateContactModal from './UpdateContactModal';
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
+import DetailContactModal from './DetailContactModal';
+import { IoIosMore } from "react-icons/io";
+
 
 interface Contact {
     id: string;
@@ -16,9 +19,12 @@ const AllContact = () => {
     const contacts = useAppSelector((state) => state.contact.contacts);
     const dispatch = useAppDispatch();
     const [showUpdateModal, setShowUpdateModal] = useState(false);
+    const [showDetailModal, setShowDetailModal] = useState(false);
     const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
+    const [selectedContactDetail, setSelectedContactDetail] = useState<Contact | null>(null);
 
-    const handleDelete = (contactId: string, contactName: string) => {
+    const handleDelete = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, contactId: string, contactName: string) => {
+        event.preventDefault();
         if (window.confirm(`Are you sure you want to delete ${contactName} contact?`)) {
             dispatch(deleteContact(contactId));
         }
@@ -28,15 +34,26 @@ const AllContact = () => {
         dispatch(updateContact(updatedContact));
     };
 
-    const handleOpenUpdateModal = (contact: Contact) => {
+    const handleOpenUpdateModal = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, contact: Contact) => {
+        event.preventDefault();
         setSelectedContact(contact);
         setShowUpdateModal(true);
     };
 
     const handleCloseUpdateModal = () => {
-        setSelectedContact(null);
+        setSelectedContactDetail(null);
         setShowUpdateModal(false);
     };
+
+    const handleOpenDetailModal = (contact: Contact) => {
+        setSelectedContactDetail(contact)
+        setShowDetailModal(true)
+    }
+
+    const handleCloseDetailModal = () => {
+        setSelectedContact(null)
+        setShowDetailModal(false)
+    }
 
     return (
         <div className=''>
@@ -45,20 +62,27 @@ const AllContact = () => {
             ) : (
                 <div className='grid md:grid-cols-3 gap-8 md:gap-12'>
                     {contacts.map((contact) => (
-                        <div key={contact.id} className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700">
-                            <div className="flex flex-col justify-between p-4 leading-normal">
-                                <h5 className="mb-2 text-2xl font-bold tracking-tight">{contact.fname} {contact.lname}</h5>
-                                <p className={`mb-3 font-normal ${contact.isActive ? 'text-green-600' : 'text-red-600'}`}> {contact.isActive ? "Active" : "Not Active"}</p>
+                        <div key={contact.id} className="relative bg-white border border-gray-200 rounded-lg shadow md:max-w-xl hover:bg-gray-100 dark:border-gray-700 hover:cursor-pointer">
+                            <div className="absolute top-2 right-2 text-gray-400 hover:text-gray-600">
+                                <IoIosMore onClick={() => handleOpenDetailModal(contact)} />
                             </div>
-                            <div className='flex flex-row gap-1 text-pink-300 m-2 text-2xl'>
-                                <FaRegEdit onClick={() => handleOpenUpdateModal(contact)} className='hover:cursor-pointer' />
-                                <MdDeleteOutline onClick={() => handleDelete(contact.id, `${contact.fname} ${contact.lname}`)} className='hover:cursor-pointer' />
+                            <div className="p-4">
+                                <h5 className="mb-2 text-2xl font-bold tracking-tight">{contact.fname} {contact.lname}</h5>
+                                <div className='flex flex-row gap-1 text-pink-300 text-2xl'>
+                                    <button onClick={(event) => handleOpenUpdateModal(event, contact)} className='hover:cursor-pointer'>
+                                        <FaRegEdit />
+                                    </button>
+                                    <button onClick={(event) => handleDelete(event, contact.id, `${contact.fname} ${contact.lname}`)} className='hover:cursor-pointer'>
+                                        <MdDeleteOutline />
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     ))}
                 </div>
             )}
             {selectedContact && <UpdateContactModal isOpen={showUpdateModal} onClose={handleCloseUpdateModal} contact={selectedContact} onUpdate={handleUpdate} />}
+            {selectedContactDetail && <DetailContactModal isOpen={showDetailModal} onClose={handleCloseDetailModal} contact={selectedContactDetail} />}
         </div>
     );
 }
