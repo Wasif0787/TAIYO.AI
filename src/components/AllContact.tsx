@@ -6,14 +6,15 @@ import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
 import DetailContactModal from './DetailContactModal';
 import { IoIosMore } from "react-icons/io";
+import { Contact } from '../store/features/contactSlice';
 
 
-interface Contact {
-    id: string;
-    fname: string;
-    lname: string;
-    isActive: boolean;
-}
+// interface Contact {
+//     id: string;
+//     fname: string;
+//     lname: string;
+//     isActive: boolean;
+// }
 
 const AllContact = () => {
     const contacts = useAppSelector((state) => state.contact.contacts);
@@ -62,9 +63,9 @@ const AllContact = () => {
             ) : (
                 <div className='grid md:grid-cols-3 gap-8 md:gap-12'>
                     {contacts.map((contact) => (
-                        <div key={contact.id} className="relative bg-white border border-gray-200 rounded-lg shadow md:max-w-xl hover:bg-gray-100 dark:border-gray-700 hover:cursor-pointer">
+                        <div key={contact.id} className="relative bg-white border border-gray-200 rounded-lg shadow md:max-w-xl hover:bg-gray-100 dark:border-gray-700 ">
                             <div className="absolute top-2 right-2 text-gray-400 hover:text-gray-600">
-                                <IoIosMore onClick={() => handleOpenDetailModal(contact)} />
+                                <IoIosMore className='hover:cursor-pointer' onClick={() => handleOpenDetailModal(contact)} />
                             </div>
                             <div className="p-4">
                                 <h5 className="mb-2 text-2xl font-bold tracking-tight">{contact.fname} {contact.lname}</h5>

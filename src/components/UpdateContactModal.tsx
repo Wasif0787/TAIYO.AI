@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-
-interface Contact {
-    id: string;
-    fname: string;
-    lname: string;
-    isActive: boolean;
-}
+import { Contact } from '../store/features/contactSlice';
+// interface Contact {
+//     id: string;
+//     fname: string;
+//     lname: string;
+//     isActive: boolean;
+// }
 
 interface UpdateContactModalProps {
     isOpen: boolean;
@@ -18,6 +18,7 @@ const UpdateContactModal: React.FC<UpdateContactModalProps> = ({ isOpen, onClose
     const [updatedFirstName, setUpdatedFirstName] = useState(contact.fname);
     const [updatedLastName, setUpdatedLastName] = useState(contact.lname);
     const [updatedStatus, setUpdatedStatus] = useState(contact.isActive);
+    const [updatedPhoneNo, setUpdatedPhoneNo] = useState(contact.phoneNumber);
 
     const handleFirstNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setUpdatedFirstName(e.target.value);
@@ -26,6 +27,11 @@ const UpdateContactModal: React.FC<UpdateContactModalProps> = ({ isOpen, onClose
     const handleLastNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setUpdatedLastName(e.target.value);
     };
+
+    const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const phoneNo = parseInt(e.target.value)
+        setUpdatedPhoneNo(phoneNo)
+    }
 
     const handleStatusChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setUpdatedStatus(e.target.checked);
@@ -37,7 +43,8 @@ const UpdateContactModal: React.FC<UpdateContactModalProps> = ({ isOpen, onClose
             id: contact.id,
             fname: updatedFirstName,
             lname: updatedLastName,
-            isActive: updatedStatus
+            isActive: updatedStatus,
+            phoneNumber: updatedPhoneNo
         };
         onUpdate(updatedContact);
         onClose();
@@ -57,6 +64,10 @@ const UpdateContactModal: React.FC<UpdateContactModalProps> = ({ isOpen, onClose
                             <div className="mb-4">
                                 <label htmlFor="lname" className="block mb-1">Last Name</label>
                                 <input type="text" id="lname" value={updatedLastName} onChange={handleLastNameChange} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" />
+                            </div>
+                            <div className="mb-4">
+                                <label htmlFor="lname" className="block mb-1">Phone No</label>
+                                <input type="text" id="lname" value={updatedPhoneNo} onChange={handlePhoneChange} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" />
                             </div>
                             <div className="mb-4">
                                 <label htmlFor="status" className="flex items-center">

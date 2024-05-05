@@ -1,11 +1,5 @@
 import React from 'react';
-
-interface Contact {
-    id: string;
-    fname: string;
-    lname: string;
-    isActive: boolean;
-}
+import { Contact } from '../store/features/contactSlice';
 
 interface DetailContactModalProps {
     isOpen: boolean;
@@ -46,6 +40,9 @@ const DetailContactModal: React.FC<DetailContactModalProps> = ({ isOpen, onClose
                                 </p>
                                 <p className="text-gray-700 mt-2">
                                     <span className="font-semibold">Last Name:</span> {contact.lname}
+                                </p>
+                                <p className="text-gray-700 mt-2">
+                                    <span className="font-semibold">Phone No:</span> {contact.phoneNumber}
                                 </p>
                                 <p className="text-gray-700 mt-2">
                                     <span className="font-semibold">Status:</span> {contact.isActive ? "Active" : "Not Active"}

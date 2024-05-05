@@ -5,6 +5,7 @@ import { addContact } from '../store/features/contactSlice';
 const AddContact = () => {
     const [firstname, setFName] = useState("");
     const [lastname, setLName] = useState("");
+    const [phoneNo, setPhoneNo] = useState(0);
     const [status, setStatus] = useState(false);
 
     const dispatch = useAppDispatch()
@@ -17,6 +18,11 @@ const AddContact = () => {
         setLName(e.target.value);
     };
 
+    const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const phoneNumber = parseInt(e.target.value); // Convert input value to a number
+        setPhoneNo(phoneNumber);
+    }
+
     const handleStatusChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         if (e.target.value === "Active") {
             setStatus(true)
@@ -27,9 +33,10 @@ const AddContact = () => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        dispatch(addContact({ fname: firstname, lname: lastname, isActive: status }))
+        dispatch(addContact({ fname: firstname, lname: lastname, isActive: status, phoneNumber: phoneNo }))
         setFName("")
         setLName("")
+        setPhoneNo(0)
         setStatus(false)
     };
 
@@ -43,6 +50,10 @@ const AddContact = () => {
                 <div className="mb-4">
                     <label htmlFor="lname" className="block mb-1">Last Name</label>
                     <input required type="text" name='lname' placeholder='Last Name' className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" value={lastname} onChange={handleLNameChange} />
+                </div>
+                <div className="mb-4">
+                    <label htmlFor="phone" className="block mb-1">Phone No</label>
+                    <input required type="number" name='phone' placeholder='Mobile Number' className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" value={phoneNo === 0 ? "" : phoneNo} onChange={handlePhoneChange} />
                 </div>
                 <div className="mb-4">
                     <label htmlFor="status" className="block mb-1">isActive</label>
