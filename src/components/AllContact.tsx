@@ -8,14 +8,6 @@ import DetailContactModal from './DetailContactModal';
 import { IoIosMore } from "react-icons/io";
 import { Contact } from '../store/features/contactSlice';
 
-
-// interface Contact {
-//     id: string;
-//     fname: string;
-//     lname: string;
-//     isActive: boolean;
-// }
-
 const AllContact = () => {
     const contacts = useAppSelector((state) => state.contact.contacts);
     const dispatch = useAppDispatch();
@@ -63,17 +55,17 @@ const AllContact = () => {
             ) : (
                 <div className='grid md:grid-cols-3 gap-8 md:gap-12'>
                     {contacts.map((contact) => (
-                        <div key={contact.id} className="relative bg-white border border-gray-200 rounded-lg shadow md:max-w-xl hover:bg-gray-100 dark:border-gray-700 ">
+                        <div key={contact.id} className={`relative border max-w-md border-gray-200 rounded-lg shadow md:max-w-xl hover:bg-gray-100 dark:border-gray-700  ${contact.isActive ? 'bg-green-400 hover:bg-green-600' : 'bg-red-400 hover:bg-red-600'} hover:bg-opacity-75 transition-colors duration-300 ease-in-out `}>
                             <div className="absolute top-2 right-2 text-gray-400 hover:text-gray-600">
-                                <IoIosMore className='hover:cursor-pointer' onClick={() => handleOpenDetailModal(contact)} />
+                                <IoIosMore className='hover:cursor-pointer text-white' onClick={() => handleOpenDetailModal(contact)} />
                             </div>
                             <div className="p-4">
                                 <h5 className="mb-2 text-2xl font-bold tracking-tight">{contact.fname} {contact.lname}</h5>
-                                <div className='flex flex-row gap-1 text-pink-300 text-2xl'>
-                                    <button onClick={(event) => handleOpenUpdateModal(event, contact)} className='hover:cursor-pointer'>
+                                <div className='flex flex-row justify-between text-pink-300 text-2xl '>
+                                    <button onClick={(event) => handleOpenUpdateModal(event, contact)} className='hover:cursor-pointer text-white '>
                                         <FaRegEdit />
                                     </button>
-                                    <button onClick={(event) => handleDelete(event, contact.id, `${contact.fname} ${contact.lname}`)} className='hover:cursor-pointer'>
+                                    <button onClick={(event) => handleDelete(event, contact.id, `${contact.fname} ${contact.lname}`)} className='hover:cursor-pointer text-white'>
                                         <MdDeleteOutline />
                                     </button>
                                 </div>

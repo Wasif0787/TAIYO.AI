@@ -41,7 +41,7 @@ const AddContact = () => {
     };
 
     return (
-        <div className="border border-gray-300 p-4 rounded-md">
+        <div className="border border-gray-300 p-8 px-12 rounded-md glass-container">
             <form onSubmit={handleSubmit}>
                 <div className="mb-4">
                     <label htmlFor="fname" className="block mb-1">First Name</label>

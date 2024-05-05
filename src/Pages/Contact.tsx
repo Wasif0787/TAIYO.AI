@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import AddContact from '../components/AddContact';
 import AllContact from '../components/AllContact';
-import "../index.css"
 
 const Contact = () => {
     const [showAddContact, setShowAddContact] = useState(true);
 
     return (
-        <div className='flex flex-col justify-center text-center mt-10'>
+        <div className='flex flex-col text-center min-h-screen pt-5 contact-body '>
             <div className="w-full flex flex-col items-center">
                 <div className=" p-2 rounded-md shadow-md mb-2">
                     <button
@@ -24,8 +23,8 @@ const Contact = () => {
                     </button>
                 </div>
             </div>
-            <div className="flex justify-center items-center w-full">
-                <div className="p-5 glass-container">
+            <div className="flex justify-center items-center    ">
+                <div className="p-5 ">
                     {showAddContact ? <AddContact /> : <AllContact />}
                 </div>
             </div>

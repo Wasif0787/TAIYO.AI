@@ -3,8 +3,11 @@
 @tailwind utilities;
 
 body {
-  background-image: url("../public/small.jpg");
-  /* Set background image */
+  overflow: hidden;
+}
+
+.contact-body {
+  background-image: url("../public/3ccc.jpg");
   background-size: cover;
   /* Cover the entire background */
   background-position: center;
@@ -15,30 +18,7 @@ body {
   /* Set solid background color */
 }
 
-/* Media query for larger screens */
-@media screen and (min-width: 768px) {
-  body {
-    background-image: url("../public/3ccc.jpg");
-    /* Set background image */
-    background-size: cover;
-    /* Cover the entire background */
-    background-position: center;
-    /* Center the background image */
-    background-repeat: no-repeat;
-    /* Prevent the background from repeating */
-    background-attachment: fixed;
-    /* Fixed background position */
-  }
-}
-
 .glass-container {
-  /* background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px); 
-    border-radius: 10px; 
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  */
-
-  /* From https://css.glass */
   background: rgba(255, 255, 255, 0.22);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
