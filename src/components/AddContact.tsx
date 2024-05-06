@@ -7,6 +7,7 @@ const AddContact = () => {
     const [lastname, setLName] = useState("");
     const [phoneNo, setPhoneNo] = useState(0);
     const [status, setStatus] = useState(false);
+    const [showSuccessMessage, setShowSuccessMessage] = useState(false)
 
     const dispatch = useAppDispatch()
 
@@ -38,6 +39,10 @@ const AddContact = () => {
         setLName("")
         setPhoneNo(0)
         setStatus(false)
+        setShowSuccessMessage(true)
+        setTimeout(() => {
+            setShowSuccessMessage(false)
+        }, 3000);
     };
 
     return (
@@ -64,6 +69,13 @@ const AddContact = () => {
                 </div>
                 <div className='mb-4 text-center'>
                     <button className='bg-[#f75990] hover:bg-pink-300 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-[50%]' type="submit">ADD</button>
+                </div>
+                <div className='h-2'>
+                    {showSuccessMessage && (
+                        <div className='text-green-400 font-bold text-center h-2 '>
+                            <h3>Contact Added Successfuly</h3>
+                        </div>
+                    )}
                 </div>
             </form>
         </div>
