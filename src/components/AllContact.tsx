@@ -34,6 +34,7 @@ const AllContact = () => {
     };
 
     const handleCloseUpdateModal = () => {
+        setSelectedContact(null)
         setSelectedContactDetail(null);
         setShowUpdateModal(false);
     };
@@ -44,6 +45,7 @@ const AllContact = () => {
     }
 
     const handleCloseDetailModal = () => {
+        setSelectedContactDetail(null)
         setSelectedContact(null)
         setShowDetailModal(false)
     }
