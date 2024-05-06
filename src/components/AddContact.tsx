@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useAppDispatch } from '../store/store';
 import { addContact } from '../store/features/contactSlice';
 import PhoneInput from 'react-phone-input-2';
-import 'react-phone-input-2/lib/style.css'
 
+import 'react-phone-input-2/lib/high-res.css'
 
 const AddContact = () => {
     const [firstname, setFName] = useState("");
@@ -48,8 +48,8 @@ const AddContact = () => {
     };
 
     return (
-        <div className="border border-gray-300 p-8 px-12  rounded-md glass-container">
-            <form onSubmit={handleSubmit}>
+        <div className="border border-gray-300 p-4  rounded-md glass-container w-60">
+            <form onSubmit={handleSubmit} className='overflow-hidden'>
                 <div className="mb-4">
                     <label htmlFor="fname" className="block mb-1">First Name</label>
                     <input type="text" required name='fname' placeholder='First Name' className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" value={firstname} onChange={handleFNameChange} />
@@ -58,7 +58,7 @@ const AddContact = () => {
                     <label htmlFor="lname" className="block mb-1">Last Name</label>
                     <input required type="text" name='lname' placeholder='Last Name' className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" value={lastname} onChange={handleLNameChange} />
                 </div>
-                <div className="mb-4">
+                <div className="mb-4 ">
                     <label htmlFor="phone" className="block mb-1">Phone No</label>
                     {/* <input required type="number" name='phone' placeholder='Mobile Number' className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" value={phoneNo === 0 ? "" : phoneNo} onChange={handlePhoneChange} /> */}
                     <PhoneInput country={"in"} inputProps={{ required: true }} autocompleteSearch enableSearch placeholder='+91 99999 99999' value={phoneNo} onChange={handlePhoneChange} />
