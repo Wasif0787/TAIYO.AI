@@ -21,7 +21,7 @@ const AddContact = () => {
     };
 
     const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setPhoneNo(e.target.value);
+        setPhoneNo(e.target.value.toString());
     }
 
     const handleStatusChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -34,19 +34,15 @@ const AddContact = () => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const noPattern = /^\d{ 10}$/
-        if (!noPattern.test(phoneNo)) {
+        console.log(phoneNo);
+        if (phoneNo.length !== 10) {
             setShowNoFormatErrorMessage(true)
-            setFName("")
-            setLName("")
-            setPhoneNo("")
-            setStatus(false)
             setTimeout(() => {
                 setShowNoFormatErrorMessage(false)
             }, 3000);
             return
         }
-        dispatch(addContact({ fname: firstname, lname: lastname, isActive: status, phoneNumber: phoneNo }))
+        dispatch(addContact({ fname: firstname, lname: lastname, isActive: status, phoneNumber: phoneNo.toString() }))
         setFName("")
         setLName("")
         setPhoneNo("")
@@ -70,7 +66,7 @@ const AddContact = () => {
                 </div>
                 <div className="mb-4">
                     <label htmlFor="phone" className="block mb-1">Phone No</label>
-                    <input required type="tel" name='phone' placeholder='9999900000' className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" value={phoneNo} onChange={handlePhoneChange} />
+                    <input required minLength={10} type="number" name='phone' placeholder='9999900000' className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" value={phoneNo} onChange={handlePhoneChange} />
                     {/* <PhoneInput country={"in"} inputProps={{ required: true }} autocompleteSearch enableSearch placeholder='+91 99999 99999' value={phoneNo} onChange={handlePhoneChange} /> */}
                 </div>
                 <div className="mb-4">

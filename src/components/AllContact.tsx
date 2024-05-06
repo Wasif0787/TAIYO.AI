@@ -57,7 +57,7 @@ const AllContact = () => {
             ) : (
                 <div className='grid md:grid-cols-3 gap-8 md:gap-12'>
                     {contacts.map((contact) => (
-                        <div key={contact.id} className={`relative border max-w-md border-gray-200 rounded-lg shadow md:max-w-xl hover:bg-gray-100 dark:border-gray-700  ${contact.isActive ? 'bg-green-400 hover:bg-green-600' : 'bg-red-400 hover:bg-red-600'} hover:bg-opacity-75 transition-colors duration-300 ease-in-out `}>
+                        <div key={contact.id} className={`relative border border-gray-200 rounded-lg shadow md:max-w-xl hover:bg-gray-100 dark:border-gray-700  ${contact.isActive ? 'bg-green-400 hover:bg-green-600' : 'bg-red-400 hover:bg-red-600'} hover:bg-opacity-75 transition-colors duration-300 ease-in-out `}>
                             <div className="absolute top-2 right-2 text-gray-400 hover:text-gray-600">
                                 <IoIosMore className='hover:cursor-pointer text-white' onClick={() => handleOpenDetailModal(contact)} />
                             </div>
