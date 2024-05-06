@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { useAppDispatch } from '../store/store';
 import { addContact } from '../store/features/contactSlice';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css'
+
 
 const AddContact = () => {
     const [firstname, setFName] = useState("");
     const [lastname, setLName] = useState("");
-    const [phoneNo, setPhoneNo] = useState(0);
+    const [phoneNo, setPhoneNo] = useState("");
     const [status, setStatus] = useState(false);
     const [showSuccessMessage, setShowSuccessMessage] = useState(false)
 
@@ -19,9 +22,8 @@ const AddContact = () => {
         setLName(e.target.value);
     };
 
-    const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const phoneNumber = parseInt(e.target.value); // Convert input value to a number
-        setPhoneNo(phoneNumber);
+    const handlePhoneChange = (value: string) => {
+        setPhoneNo(value);
     }
 
     const handleStatusChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -37,7 +39,7 @@ const AddContact = () => {
         dispatch(addContact({ fname: firstname, lname: lastname, isActive: status, phoneNumber: phoneNo }))
         setFName("")
         setLName("")
-        setPhoneNo(0)
+        setPhoneNo("")
         setStatus(false)
         setShowSuccessMessage(true)
         setTimeout(() => {
@@ -58,7 +60,8 @@ const AddContact = () => {
                 </div>
                 <div className="mb-4">
                     <label htmlFor="phone" className="block mb-1">Phone No</label>
-                    <input required type="number" name='phone' placeholder='Mobile Number' className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" value={phoneNo === 0 ? "" : phoneNo} onChange={handlePhoneChange} />
+                    {/* <input required type="number" name='phone' placeholder='Mobile Number' className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" value={phoneNo === 0 ? "" : phoneNo} onChange={handlePhoneChange} /> */}
+                    <PhoneInput country={"in"} inputProps={{ required: true }} autocompleteSearch showDropdown enableSearch placeholder='+91 99999 99999' value={phoneNo} onChange={handlePhoneChange} />
                 </div>
                 <div className="mb-4">
                     <label htmlFor="status" className="block mb-1">isActive</label>

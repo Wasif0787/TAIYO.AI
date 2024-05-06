@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Contact } from '../store/features/contactSlice';
+import PhoneInput from 'react-phone-input-2';
 
 
 interface UpdateContactModalProps {
@@ -23,9 +24,8 @@ const UpdateContactModal: React.FC<UpdateContactModalProps> = ({ isOpen, onClose
         setUpdatedLastName(e.target.value);
     };
 
-    const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const phoneNo = parseInt(e.target.value)
-        setUpdatedPhoneNo(phoneNo)
+    const handlePhoneChange = (value: string) => {
+        setUpdatedPhoneNo(value)
     }
 
     const handleStatusChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -63,7 +63,8 @@ const UpdateContactModal: React.FC<UpdateContactModalProps> = ({ isOpen, onClose
                                 </div>
                                 <div className="mb-4">
                                     <label htmlFor="lname" className="block mb-1">Phone No</label>
-                                    <input type="text" id="lname" value={updatedPhoneNo} onChange={handlePhoneChange} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" />
+                                    {/* <input type="text" id="lname" value={updatedPhoneNo} onChange={handlePhoneChange} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" /> */}
+                                    <PhoneInput value={updatedPhoneNo} onChange={handlePhoneChange} />
                                 </div>
                                 <div className="mb-4">
                                     <label htmlFor="status" className="flex items-center">

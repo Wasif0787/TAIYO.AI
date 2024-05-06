@@ -5,7 +5,7 @@ export interface Contact {
     fname: string,
     lname: string,
     isActive: boolean,
-    phoneNumber: number,
+    phoneNumber: string,
 }
 
 interface ContactState {
@@ -30,7 +30,7 @@ export const ContactSlice = createSlice({
     name: "contact",
     initialState,
     reducers: {
-        addContact: (state, action: PayloadAction<{ fname: string, lname: string, isActive: boolean, phoneNumber: number }>) => {
+        addContact: (state, action: PayloadAction<{ fname: string, lname: string, isActive: boolean, phoneNumber: string }>) => {
             state.contacts.push({
                 id: nanoid(),
                 fname: action.payload.fname,
@@ -40,7 +40,7 @@ export const ContactSlice = createSlice({
             })
             saveContactsToLocalStorage(state.contacts);
         },
-        updateContact: (state, action: PayloadAction<{ id: string; fname: string; lname: string; isActive: boolean; phoneNumber: number }>) => {
+        updateContact: (state, action: PayloadAction<{ id: string; fname: string; lname: string; isActive: boolean; phoneNumber: string }>) => {
             const { id, fname, lname, isActive, phoneNumber } = action.payload;
             const contactIndex = state.contacts.findIndex(contact => contact.id === id);
             if (contactIndex !== -1) {
