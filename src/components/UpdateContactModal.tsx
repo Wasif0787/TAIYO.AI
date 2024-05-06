@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Contact } from '../store/features/contactSlice';
-import PhoneInput from 'react-phone-input-2';
 
 
 interface UpdateContactModalProps {

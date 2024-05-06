@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { useAppDispatch } from '../store/store';
 import { addContact } from '../store/features/contactSlice';
-import PhoneInput from 'react-phone-input-2';
-
-import 'react-phone-input-2/lib/high-res.css'
 
 const AddContact = () => {
     const [firstname, setFName] = useState("");
