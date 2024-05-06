@@ -24,9 +24,9 @@ const UpdateContactModal: React.FC<UpdateContactModalProps> = ({ isOpen, onClose
         setUpdatedLastName(e.target.value);
     };
 
-    const handlePhoneChange = (value: string | undefined) => {
+    const handlePhoneChange = (value: React.ChangeEvent<HTMLInputElement>) => {
         if (value) {
-            setUpdatedPhoneNo(value.toString());
+            setUpdatedPhoneNo(value.target.value);
         } else {
             setUpdatedPhoneNo("");
         }
@@ -67,8 +67,8 @@ const UpdateContactModal: React.FC<UpdateContactModalProps> = ({ isOpen, onClose
                                 </div>
                                 <div className="mb-4">
                                     <label htmlFor="lname" className="block mb-1">Phone No</label>
-                                    {/* <input type="text" id="lname" value={updatedPhoneNo} onChange={handlePhoneChange} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" /> */}
-                                    <PhoneInput country={"in"} autocompleteSearch enableSearch placeholder='+91 99999 99999' value={updatedPhoneNo} onChange={handlePhoneChange} />
+                                    <input type="text" id="lname" value={updatedPhoneNo} onChange={handlePhoneChange} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" />
+                                    {/* <PhoneInput country={"in"} autocompleteSearch enableSearch placeholder='+91 99999 99999' value={updatedPhoneNo} onChange={handlePhoneChange} /> */}
                                 </div>
                                 <div className="mb-4">
                                     <label htmlFor="status" className="flex items-center">
