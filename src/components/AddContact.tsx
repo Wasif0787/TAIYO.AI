@@ -61,7 +61,7 @@ const AddContact = () => {
                 <div className="mb-4">
                     <label htmlFor="phone" className="block mb-1">Phone No</label>
                     {/* <input required type="number" name='phone' placeholder='Mobile Number' className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" value={phoneNo === 0 ? "" : phoneNo} onChange={handlePhoneChange} /> */}
-                    <PhoneInput country={"in"} inputProps={{ required: true }} autocompleteSearch showDropdown enableSearch placeholder='+91 99999 99999' value={phoneNo} onChange={handlePhoneChange} />
+                    <PhoneInput country={"in"} inputProps={{ required: true }} autocompleteSearch enableSearch placeholder='+91 99999 99999' value={phoneNo} onChange={handlePhoneChange} />
                 </div>
                 <div className="mb-4">
                     <label htmlFor="status" className="block mb-1">isActive</label>
