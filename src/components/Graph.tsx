@@ -15,17 +15,18 @@ const Graph = () => {
                 (res) => res.json()
             ),
     });
-    if (isPending) return <>"Loading..."</>;
+    if (isPending) return <>Loading...</>;
 
     if (error) return <>"An error has occurred: " + {error.message}</>;
     return (
-        <div className="">
-            <h1 className="text-center ">
+        <div className="w-full">
+            <h1 className="text-center text-lg font-bold">
                 COVID-19 Cases Fluctuations
             </h1>
             <LineChart
                 height={500}
-                margin={{ left: 130, right: 130, top: 130 }}
+                margin={{ left: 100, right: 30, top: 70 }}
+                grid={{ horizontal: true }}
                 series={[
                     casesShow
                         ? {
@@ -51,7 +52,7 @@ const Graph = () => {
                 ]}
                 xAxis={[{ scaleType: "point", data: Object.keys(data.cases) }]}
             />
-            <div className="flex justify-center text-center">
+            <div className="flex justify-center text-center pb-4 font-semibold gap-4">
                 <div>
                     Cases
                     <Checkbox

@@ -18,6 +18,18 @@ body {
   /* Set solid background color */
 }
 
+.chart-body {
+  background-image: url("../public/covid.jpg");
+  background-size: cover;
+  /* Cover the entire background */
+  background-position: center;
+  /* Center the background image */
+  background-repeat: no-repeat;
+  /* Prevent the background from repeating */
+  background-attachment: fixed;
+  /* Set solid background color */
+}
+
 .glass-container {
   background: rgba(255, 255, 255, 0.22);
   border-radius: 16px;

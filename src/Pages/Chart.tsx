@@ -7,11 +7,11 @@ const queryClient = new QueryClient();
 const Chart = () => {
     const [showMap, setShowMap] = useState(true);
     return (
-        <div className=' '>
-            <div className="w-full flex flex-col items-center">
-                <div className=" p-2 rounded-md shadow-md mb-2">
+        <div className='min-h-screen chart-body'>
+            <div className="w-full flex flex-col items-center ">
+                <div className=" rounded-md shadow-md pt-2">
                     <button
-                        className={`text-xl md:text-2xl font-semibold py-2 px-4 mb-2 md:mb-4 rounded-md focus:outline-none ${showMap ? 'bg-[#f75990] text-white' : 'text-gray-800 hover:bg-pink-300'}`}
+                        className={`text-xl md:text-2xl font-semibold py-2 px-4 rounded-md focus:outline-none ${showMap ? 'bg-[#f75990] text-white' : 'text-gray-800 hover:bg-pink-300'}`}
                         onClick={() => setShowMap(true)}
                     >
                         Maps
@@ -25,8 +25,8 @@ const Chart = () => {
                 </div>
             </div>
             <QueryClientProvider client={queryClient}>
-                <div className="p-4 ">
-                    <div className="">
+                <div className="p-4">
+                    <div className=" pb-4">
                         {showMap ? <Map /> : <Graph />}
                     </div>
                 </div>
