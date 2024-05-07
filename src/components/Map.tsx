@@ -3,6 +3,29 @@ import { useQuery } from "@tanstack/react-query";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { createCustomIcon } from "./CreateCustomIcon";
+import Lottie from "react-lottie";
+import * as location from "./loading.json"
+import * as success from "./success.json"
+import { useEffect, useState } from "react";
+
+const defaultOptions1 = {
+    loop: true,
+    autoplay: true,
+    animationData: location,
+    rendererSettings: {
+        preserveAspectRatio: "xMidYMid slice",
+    },
+};
+
+const defaultOptions2 = {
+    loop: true,
+    autoplay: true,
+    animationData: success,
+    rendererSettings: {
+        preserveAspectRatio: "xMidYMid slice",
+    },
+};
+
 
 
 interface CountryData {
@@ -19,6 +42,8 @@ interface CountryInfo {
 }
 
 const Map = () => {
+    const [loading, setLoading] = useState(true);
+    const [loading2, setLoading2] = useState(false);
     const { isPending, error, data } = useQuery({
         queryKey: ["repoDataMap"],
         queryFn: () =>
@@ -27,7 +52,28 @@ const Map = () => {
             ),
     });
 
-    if (isPending) return <>"Loading..."</>;
+    useEffect(() => {
+        const timeout1 = setTimeout(() => {
+            setLoading(false);
+            setLoading2(true);
+        }, 1000);
+
+        const timeout2 = setTimeout(() => {
+            setLoading2(false);
+        }, 2000);
+
+        return () => {
+            clearTimeout(timeout1);
+            clearTimeout(timeout2);
+        };
+    }, []);
+
+    if (loading) return <Lottie options={defaultOptions1} height={200} width={200} />;
+    if (loading2) return <Lottie options={defaultOptions2} height={100} width={100} />;
+
+    if (isPending) return <>
+        <Lottie options={defaultOptions2} height={100} width={100} />
+    </>;
 
     if (error) return <>"An error has occurred: " + {error.message}</>;
     return (

@@ -54,19 +54,19 @@ const UpdateContactModal: React.FC<UpdateContactModalProps> = ({ isOpen, onClose
                 <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex flex-col justify-center items-center">
                     <div>
                         <h1 className='text-2xl p-2 bg-[#f75990]'>Update</h1>
-                        <div className="bg-white p-8  rounded-md">
+                        <div className=" glass-container p-8  rounded-md">
                             <form onSubmit={handleSubmit}>
                                 <div className="mb-4">
                                     <label htmlFor="fname" className="block mb-1">First Name</label>
-                                    <input type="text" id="fname" value={updatedFirstName} onChange={handleFirstNameChange} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" />
+                                    <input type="text" id="fname" value={updatedFirstName} onChange={handleFirstNameChange} className="w-full glass-container px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" />
                                 </div>
                                 <div className="mb-4">
                                     <label htmlFor="lname" className="block mb-1">Last Name</label>
-                                    <input type="text" id="lname" value={updatedLastName} onChange={handleLastNameChange} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" />
+                                    <input type="text" id="lname" value={updatedLastName} onChange={handleLastNameChange} className="w-full px-3 glass-container py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" />
                                 </div>
                                 <div className="mb-4">
                                     <label htmlFor="lname" className="block mb-1">Phone No</label>
-                                    <input type="text" id="lname" value={updatedPhoneNo} onChange={handlePhoneChange} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" />
+                                    <input type="text" id="lname" value={updatedPhoneNo} onChange={handlePhoneChange} className="w-full px-3 py-2 border glass-container border-gray-300 rounded-md focus:outline-none focus:border-blue-500" />
                                     {/* <PhoneInput country={"in"} autocompleteSearch enableSearch placeholder='+91 99999 99999' value={updatedPhoneNo} onChange={handlePhoneChange} /> */}
                                 </div>
                                 <div className="mb-4">

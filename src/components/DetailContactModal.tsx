@@ -11,10 +11,10 @@ const DetailContactModal: React.FC<DetailContactModalProps> = ({ isOpen, onClose
     return (
         <>
             {isOpen && (
-                <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center">
+                <div className="fixed top-0 left-0 w-full h-full  bg-gray-900 bg-opacity-50 flex justify-center items-center">
                     <div className="fixed inset-0 bg-black opacity-50"></div>
                     <div className="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center">
-                        <div className="bg-white rounded-lg shadow-lg w-full max-w-md mx-auto my-6">
+                        <div className="bg-white glass-container rounded-lg shadow-lg w-full max-w-md mx-auto my-6">
                             <div className="flex justify-between items-center px-4 py-2 border-b border-gray-200 bg-[#f75990] text-white">
                                 <h3 className="text-lg font-semibold">Contact Details</h3>
                                 <button
@@ -34,18 +34,18 @@ const DetailContactModal: React.FC<DetailContactModalProps> = ({ isOpen, onClose
                                     </svg>
                                 </button>
                             </div>
-                            <div className="px-4 py-6">
-                                <p className="text-gray-700">
-                                    <span className="font-semibold">First Name:</span> {contact.fname}
+                            <div className="px-4  py-6">
+                                <p className="text-gray-900 font-semibold ">
+                                    <span className="font-bold">First Name:</span> {contact.fname}
                                 </p>
-                                <p className="text-gray-700 mt-2">
-                                    <span className="font-semibold">Last Name:</span> {contact.lname}
+                                <p className="text-gray-900 mt-2 font-semibold">
+                                    <span className="font-bold">Last Name:</span> {contact.lname}
                                 </p>
-                                <p className="text-gray-700 mt-2">
-                                    <span className="font-semibold">Phone No:</span> {contact.phoneNumber}
+                                <p className="text-gray-900 mt-2 font-semibold">
+                                    <span className="font-bold">Phone No:</span> {contact.phoneNumber}
                                 </p>
-                                <p className="text-gray-700 mt-2">
-                                    <span className="font-semibold">Status:</span> {contact.isActive ? "Active" : "Not Active"}
+                                <p className="text-gray-900 mt-2 font-semibold">
+                                    <span className="font-bold">Status:</span> {contact.isActive ? "Active" : "Not Active"}
                                 </p>
                             </div>
                             <div className="flex justify-end px-4 py-2 border-t border-gray-200">

@@ -51,7 +51,7 @@ const AllContact = () => {
     }
 
     return (
-        <div className=''>
+        <div className='glass-container p-5'>
             {contacts.length === 0 ? (
                 <p className="text-center mt-4">No contacts found. Please create a contact using the add contact button.</p>
             ) : (

@@ -2,11 +2,35 @@ import { LineChart } from "@mui/x-charts";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Checkbox from "@mui/material/Checkbox";
+import Lottie from "react-lottie";
+import * as location from "./loading.json"
+import * as success from "./success.json"
+import { useEffect } from "react";
+
+const defaultOptions1 = {
+    loop: true,
+    autoplay: true,
+    animationData: location,
+    rendererSettings: {
+        preserveAspectRatio: "xMidYMid slice",
+    },
+};
+
+const defaultOptions2 = {
+    loop: true,
+    autoplay: true,
+    animationData: success,
+    rendererSettings: {
+        preserveAspectRatio: "xMidYMid slice",
+    },
+};
 
 const Graph = () => {
     const [casesShow, setCasesShow] = useState(true);
     const [recoveredShow, setRecoveredShow] = useState(false);
     const [deathsShow, setDeathsShow] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [loading2, setLoading2] = useState(false);
 
     interface Obj {
         [key: string]: number;
@@ -24,7 +48,26 @@ const Graph = () => {
             ),
     });
 
-    if (isPending) return <>Loading...</>;
+    useEffect(() => {
+        const timeout1 = setTimeout(() => {
+            setLoading(false);
+            setLoading2(true);
+        }, 1000);
+
+        const timeout2 = setTimeout(() => {
+            setLoading2(false);
+        }, 2000);
+
+        return () => {
+            clearTimeout(timeout1);
+            clearTimeout(timeout2);
+        };
+    }, []);
+
+    if (loading) return <Lottie options={defaultOptions1} height={200} width={200} />;
+    if (loading2) return <Lottie options={defaultOptions2} height={100} width={100} />;
+
+    if (isPending) return <><Lottie options={defaultOptions2} height={100} width={100} /></>;
 
     if (error) return <>"An error has occurred: " + {error.message}</>;
     const casesSum = sumValues(data.cases)
