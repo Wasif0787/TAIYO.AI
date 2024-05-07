@@ -31,45 +31,48 @@ const Map = () => {
 
     if (error) return <>"An error has occurred: " + {error.message}</>;
     return (
-        <div className=" flex justify-center items-center h-96">
-            <MapContainer
-                className="h-full w-screen"
-                center={[data[0].countryInfo.lat, data[0].countryInfo.long]}
-                zoom={5}
-                scrollWheelZoom={true}
-            >
-                <TileLayer
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
+        <>
+            <div className=" flex justify-center items-center h-96">
+                <MapContainer
+                    className="h-full w-screen "
+                    center={[data[94].countryInfo.lat, data[94].countryInfo.long]}
+                    zoom={4}
+                    scrollWheelZoom={true}
+                >
 
-                {data.map((elem: CountryData) => (
-                    <Marker
-                        icon={createCustomIcon}
-                        key={elem.country}
-                        position={[elem.countryInfo.lat, elem.countryInfo.long]}
-                    >
-                        <Popup>
-                            <div>
-                                <span className="font-bold">Country: </span>
-                                {elem.country}
-                            </div>
-                            <div>
-                                <span className="font-bold">Acitve Cases: </span>{" "}
-                                {elem.active}
-                            </div>
-                            <div>
-                                <span className="font-bold">Recovered Cases: </span>{" "}
-                                {elem.recovered}
-                            </div>
-                            <div>
-                                <span className="font-bold">Deaths: </span> {elem.deaths}
-                            </div>
-                        </Popup>
-                    </Marker>
-                ))}
-            </MapContainer>
-        </div>
+                    <TileLayer
+                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+
+                    {data.map((elem: CountryData) => (
+                        <Marker
+                            icon={createCustomIcon}
+                            key={elem.country}
+                            position={[elem.countryInfo.lat, elem.countryInfo.long]}
+                        >
+                            <Popup>
+                                <div>
+                                    <span className="font-bold">Country: </span>
+                                    {elem.country}
+                                </div>
+                                <div>
+                                    <span className="font-bold">Acitve Cases: </span>{" "}
+                                    {elem.active}
+                                </div>
+                                <div>
+                                    <span className="font-bold">Recovered Cases: </span>{" "}
+                                    {elem.recovered}
+                                </div>
+                                <div>
+                                    <span className="font-bold">Deaths: </span> {elem.deaths}
+                                </div>
+                            </Popup>
+                        </Marker>
+                    ))}
+                </MapContainer>
+            </div>
+        </>
     )
 }
 
