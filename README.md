@@ -1,5 +1,7 @@
 # Contacts Management and Covid Cases Tracker
 
+## Live Site Here: [Visit Here](https://contact-maps-taiyo.netlify.app/)
+
 The aim of this project is to let users manage their contats and to provide details to the user about the covid cases around the world using different ways like charts,maps and a dashboard.
 
 ## Technologies Used
@@ -131,4 +133,4 @@ This section provides an overview of the project structure and key features.
   - Excludes the "updated" key from the displayed data.
   - Updates the UI with loading animations while fetching and processing data.
 
-![Dashboard](./snapshots//dashboard.png)
+![Dashboard](./snapshots/dashboard.png)
