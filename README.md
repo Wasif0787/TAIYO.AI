@@ -84,7 +84,7 @@ This section provides an overview of the project structure and key features.
     -Green background indicates contact is active whereas red background indicates contact is inactive.
 
 - View Contacts
-  ![ViewContacts](./snapshots/addContact.png)
+  ![ViewContacts](./snapshots/viewContact.png)
 
 - Update Contacts
   ![UpdateContacts](./snapshots/UpdateContact.png)
