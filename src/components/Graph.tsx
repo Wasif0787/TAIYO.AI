@@ -32,13 +32,6 @@ const Graph = () => {
     const [loading, setLoading] = useState(true);
     const [loading2, setLoading2] = useState(false);
 
-    interface Obj {
-        [key: string]: number;
-    }
-
-    const sumValues = (obj: Obj): number => {
-        return Object.values(obj).reduce((acc, curr) => acc + curr, 0);
-    };
 
     const { isPending, error, data } = useQuery({
         queryKey: ["repoData"],
@@ -70,9 +63,6 @@ const Graph = () => {
     if (isPending) return <><Lottie options={defaultOptions2} height={100} width={100} /></>;
 
     if (error) return <>"An error has occurred: " + {error.message}</>;
-    const casesSum = sumValues(data.cases)
-    const deathSum = sumValues(data.deaths)
-    const recoveredSum = sumValues(data.recovered)
     return (
         <div className="w-full">
             <div className="flex flex-col md:flex-row justify-around">
@@ -80,12 +70,6 @@ const Graph = () => {
                     <h1 className=" text-lg font-bold">
                         COVID-19 Cases Fluctuations
                     </h1>
-                </div>
-                <div className="text-center">
-                    <h2 className="font-semibold">Global Data</h2>
-                    <p><span className="font-semibold">Total Cases: </span>{casesSum}</p>
-                    <p><span className="font-semibold">Total Deaths: </span>{deathSum}</p>
-                    <p><span className="font-semibold">Total Recovered: </span>{recoveredSum}</p>
                 </div>
             </div>
             <LineChart
