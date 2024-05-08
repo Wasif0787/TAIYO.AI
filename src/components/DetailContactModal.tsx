@@ -11,10 +11,9 @@ const DetailContactModal: React.FC<DetailContactModalProps> = ({ isOpen, onClose
     return (
         <>
             {isOpen && (
-                <div className="fixed top-0 left-0 w-full h-full  bg-gray-900 bg-opacity-50 flex justify-center items-center">
-                    <div className="fixed inset-0 bg-black opacity-50"></div>
-                    <div className="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center">
-                        <div className="bg-white glass-container rounded-lg shadow-lg w-full max-w-md mx-auto my-6">
+                <div className="fixed top-0 left-0 w-full h-full bg-gray-700 bg-opacity-50 flex flex-col justify-center items-center">
+                    <div className=" flex flex-col w-72 md:w-96 h-full">
+                        <div className=" glass-container rounded-lg shadow-lg">
                             <div className="flex justify-between items-center px-4 py-2 border-b border-gray-200 bg-[#f75990] text-white">
                                 <h3 className="text-lg font-semibold">Contact Details</h3>
                                 <button

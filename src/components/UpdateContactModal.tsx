@@ -51,8 +51,8 @@ const UpdateContactModal: React.FC<UpdateContactModalProps> = ({ isOpen, onClose
     return (
         <>
             {isOpen && (
-                <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex flex-col justify-center items-center">
-                    <div>
+                <div className="fixed top-0 left-0 w-full h-full bg-gray-700 bg-opacity-50 flex flex-col justify-center items-center">
+                    <div className='flex flex-col w-72 md:w-96 h-full'>
                         <h1 className='text-2xl p-2 bg-[#f75990]'>Update</h1>
                         <div className=" glass-container p-8  rounded-md">
                             <form onSubmit={handleSubmit}>

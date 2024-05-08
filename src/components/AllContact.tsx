@@ -62,7 +62,7 @@ const AllContact = () => {
                                 <IoIosMore className='hover:cursor-pointer text-white' onClick={() => handleOpenDetailModal(contact)} />
                             </div>
                             <div className="p-4">
-                                <h5 className="mb-2 text-2xl font-bold tracking-tight">{contact.fname} {contact.lname}</h5>
+                                <h5 className="mb-2 text-2xl font-bold tracking-tight break-words overflow-hidden">{contact.fname} {contact.lname}</h5>
                                 <div className='flex flex-row justify-between text-pink-300 text-2xl '>
                                     <button onClick={(event) => handleOpenUpdateModal(event, contact)} className='hover:cursor-pointer text-white '>
                                         <FaRegEdit />
