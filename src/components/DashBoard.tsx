@@ -28,7 +28,7 @@ const DashBoard = () => {
     const [loading, setLoading] = useState(true);
     const [loading2, setLoading2] = useState(false);
     const { isPending, error, data } = useQuery({
-        queryKey: ["repoDataMap"],
+        queryKey: ["repoDataDash"],
         queryFn: () =>
             fetch("https://disease.sh/v3/covid-19/all").then((res) =>
                 res.json()

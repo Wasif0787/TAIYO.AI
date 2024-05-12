@@ -1,4 +1,3 @@
-// import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { useQuery } from "@tanstack/react-query";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
